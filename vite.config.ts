@@ -6,9 +6,23 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'es2020',
+    },
+  },
+  esbuild: {
+    // https://github.com/vitejs/vite/issues/8644#issuecomment-1159308803
+    logOverride: { 'this-is-undefined-in-esm': 'silent' },
+  },
   plugins: [
-    react(),
+    react({
+      babel: {
+        plugins: ['babel-plugin-macros', 'babel-plugin-styled-components'],
+      },
+    }),
     tsconfigPaths(),
+    
     electron({
       main: {
         // Shortcut of `build.lib.entry`.
@@ -23,5 +37,14 @@ export default defineConfig({
       // See 👉 https://github.com/electron-vite/vite-plugin-electron-renderer
       renderer: {},
     }),
+
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@/components': path.resolve(__dirname, './src/components'),
+      '@/types': path.resolve(__dirname, './src/types'),
+      '@/hooks': path.resolve(__dirname, './src/hooks'),
+    }
+  }
 })
