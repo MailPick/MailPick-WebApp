@@ -13,6 +13,7 @@ export interface LabelProps {
   children:ReactNode;
 }
 
+
 const fontSizeStyle = (fontSize: FontSize) => css`
   ${fontSize === "sm" && tw`text-sm`}
   ${fontSize === "md" && tw`text-base`}
@@ -28,3 +29,5 @@ export const StyledLabel = styled.span<LabelProps>`
   ${({ fontSize }) => fontSizeStyle(fontSize)}
   ${({ fontBold }) => fontBold && fontBoldStyle(fontBold)}
 `;
+
+

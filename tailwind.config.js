@@ -1,19 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-export default {
-  content: ["./src/**/*.{html,js}"],
-  theme: {
-    extend: {
-      colors
-    }
-  },
-  plugins: [],
-  corePlugins:{
-    
-  }
-} 
-
-
 const colors = {
   blue:{  
     "50":"#F0F3FF",
@@ -28,3 +14,17 @@ const colors = {
     "900" : "#003579"
   }
 }
+export default {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {
+      colors
+    }
+  },
+  plugins: [],
+  corePlugins:{
+    
+  }
+} 
+
+
