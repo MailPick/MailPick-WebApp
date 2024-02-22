@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import {buttonVariants,buttonSize,baseStyle,ButtonVariant,ButtonSize} from "./Button.style";
+import {buttonVariants,buttonSize,baseStyle,ButtonVariant,ButtonSize} from "./styled";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   children:React.ReactNode;
-  variant: ButtonVariant;
+  variant?: ButtonVariant;
   size:ButtonSize;
 } 
 
