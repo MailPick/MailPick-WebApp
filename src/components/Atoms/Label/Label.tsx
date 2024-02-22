@@ -1,4 +1,4 @@
-import {LabelProps, StyledLabel} from './Label.style'
+import {LabelProps, StyledLabel} from './styled'
 
 export const Label = ({
   fontSize,
