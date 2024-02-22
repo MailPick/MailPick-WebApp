@@ -1,12 +1,12 @@
 //svg sprilt 방식
-const IconId = {
-  BiInbox:"bi-inbox",
+export const IconId = {
+  BiInbox:"biInbox",
   File:"file",
-  List:"list",
-  List1:"list-1",
-  List2:"list-2",
-  PaperPlannerTilt:"paper-planer-tilt",
-  PushPin:"push-pin",
+  Hamburger:"hamburger",
+  List1:"list1",
+  List2:"list2",
+  PaperPlaneTilt:"paperPlaneTilt",
+  PushPin:"pushPin",
   Trash:"trash"
 } as const
 
@@ -26,7 +26,7 @@ const Icon:React.FC<SvgIconProps> = ({
 }) => {
   return(
     <svg width={width} height={height} {...props}>
-      <use href={`#${id}`} fill="currentColor"/>
+      <use href={`#${id}`} />
     </svg>
   )
 }
