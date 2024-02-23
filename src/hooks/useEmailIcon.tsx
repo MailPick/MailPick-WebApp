@@ -1,6 +1,6 @@
 const useEmailIcon = (email:string) => {
   const getDomainLogo = (email : string) => {
-    if(!email) return "user"
+    if(!email || !email.includes("@")) return "user"
     
     const domain = email.split("@")[1]
 
