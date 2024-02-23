@@ -74,20 +74,20 @@ const spriteSvgCode = (
         <stop offset="0.6954" stopColor="#ffcb00" stopOpacity=".0728"/>
         <stop offset="0.75" stopColor="#ffc800" stopOpacity="0"/>
       </linearGradient>
-      <circle cx="44.184" cy="52.537" r="39.934" fill="url(#c)" clip-path="url(#b)"/>
+      <circle cx="44.184" cy="52.537" r="39.934" fill="url(#c)" clipPath="url(#b)"/>
       <linearGradient id="d" x1="-2508.585" x2="-2452.1094" y1="3199.2197" y2="3142.7439" gradientTransform="translate(2524.53 -3118.445)" gradientUnits="userSpaceOnUse">
         <stop offset="0" stopColor="#fa3264"/>
         <stop offset="0.3016" stopColor="#fa3864" stopOpacity=".5979"/>
         <stop offset="0.6954" stopColor="#f94864" stopOpacity=".0728"/>
         <stop offset="0.75" stopColor="#f94b64" stopOpacity="0"/>
       </linearGradient>
-      <circle cx="44.184" cy="52.537" r="39.934" fill="url(#d)" clip-path="url(#b)" opacity="0.75"/>
+      <circle cx="44.184" cy="52.537" r="39.934" fill="url(#d)" clipPath="url(#b)" opacity="0.75"/>
       <radialGradient id="e" cx="489.9209" cy="126.4219" r="33.6314" gradientTransform="translate(-1178.137 -300.207) scale(2.4731)" gradientUnits="userSpaceOnUse">
         <stop offset="0" stopColor="#6496ff"/>
         <stop offset="0.3695" stopColor="#5e99ff" stopOpacity=".5381"/>
         <stop offset="0.8" stopColor="#50a0ff" stopOpacity="0"/>
       </radialGradient>
-      <path fill="url(#e)" d="M4.249 12.602h79.869v79.869H4.249z" clip-path="url(#b)"/>
+      <path fill="url(#e)" d="M4.249 12.602h79.869v79.869H4.249z" clipPath="url(#b)"/>
     </symbol>
   </svg>
   
