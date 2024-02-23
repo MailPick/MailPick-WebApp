@@ -76,3 +76,32 @@ export const TrashIcon: Story ={
     height:"60px"
   }
 }
+export const UserIcon: Story ={
+  args:{
+    id:"user",
+    width:"60px",
+    height:"60px"
+  }
+}
+
+export const NaverIcon: Story = {
+  args:{
+    id:"naver",
+    width:"60px",
+    height:"60px"
+  }
+}
+export const GoogleIcon: Story = {
+  args:{
+    id:"google",
+    width:"60px",
+    height:"60px"
+  }
+}
+export const DaumIcon: Story = {
+  args:{
+    id:"daum",
+    width:"60px",
+    height:"60px"
+  }
+}

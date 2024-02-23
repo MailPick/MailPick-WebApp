@@ -7,7 +7,11 @@ export const IconId = {
   List2:"list2",
   PaperPlaneTilt:"paperPlaneTilt",
   PushPin:"pushPin",
-  Trash:"trash"
+  Trash:"trash",
+  User:"user",
+  Naver:"naver",
+  Google:"google",
+  Daum:"daum"
 } as const
 
 type IconId = typeof IconId[keyof typeof IconId]
