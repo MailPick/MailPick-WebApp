@@ -4,7 +4,7 @@ import {buttonVariants,buttonSize,baseStyle,ButtonVariant,ButtonSize} from "./st
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   children:React.ReactNode;
   variant?: ButtonVariant;
-  size:ButtonSize;
+  size?:ButtonSize;
 } 
 
 const StyledButton = styled.button<ButtonProps>(({ variant, size }) => [
@@ -13,12 +13,12 @@ const StyledButton = styled.button<ButtonProps>(({ variant, size }) => [
   variant && buttonVariants[variant]
 ]);
 
-export const Button:React.FC<ButtonProps> = ({
+export const Button = ({
   children,
   variant = "default",
   size = "md",
   ...rest
-}) => {
+}:ButtonProps) => {
   return(
     <StyledButton variant={variant} size={size} {...rest}>
       {children}

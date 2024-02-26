@@ -7,14 +7,10 @@ interface AvatarProp {
   email:string
 }
 
-
-/**
- * 
- */
-const Avatar:React.FC<AvatarProp> = ({
+const Avatar = ({
   emailIconUrl,
   email
-  }) => {
+  }:AvatarProp) => {
   const emailIconId = useEmailIcon(email)
   return(
     <>
@@ -23,7 +19,6 @@ const Avatar:React.FC<AvatarProp> = ({
         <ImgBox>
           <Img src={emailIconUrl}/>
         </ImgBox>
-        
       ):(
         <EmailIconBox>
           <Icon id={emailIconId} width="28" height="28"/>

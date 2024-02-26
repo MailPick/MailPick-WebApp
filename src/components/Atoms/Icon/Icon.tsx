@@ -1,4 +1,7 @@
 //svg sprilt 방식
+/**Todo
+ * 마우스 올려놓을때 배경색 blue div로 있어야함
+ */
 export const IconId = {
   BiInbox:"biInbox",
   File:"file",
@@ -22,16 +25,18 @@ interface SvgIconProps {
   height : string;
 }
 
-const Icon:React.FC<SvgIconProps> = ({
+const Icon = ({
   id,
   width,
   height,
   ...props
-}) => {
+}:SvgIconProps) => {
   return(
-    <svg width={width} height={height} {...props}>
-      <use href={`#${id}`} />
-    </svg>
+    <div>
+      <svg width={width} height={height} {...props}>
+        <use href={`#${id}`} />
+      </svg>
+    </div>
   )
 }
 
