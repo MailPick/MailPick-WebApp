@@ -2,7 +2,7 @@ import type { Preview } from "@storybook/react";
 import React from 'react';
 import GlobalSVGProvider from '../src/assets/SVGIconProvider';
 import { StoryFn } from "@storybook/react";
-
+import '../src/index.css'
 const withGlobalSVGProvider: StoryFn<any> = (Story) => (
   React.createElement(React.Fragment, null, 
     React.createElement(GlobalSVGProvider, null),
