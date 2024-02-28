@@ -32,11 +32,9 @@ const Icon = ({
   ...props
 }:SvgIconProps) => {
   return(
-    <div>
-      <svg width={width} height={height} {...props}>
-        <use href={`#${id}`} />
-      </svg>
-    </div>
+    <svg width={width} height={height} {...props}>
+      <use href={`#${id}`} />
+    </svg>
   )
 }
 
