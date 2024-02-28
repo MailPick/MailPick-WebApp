@@ -1,5 +1,4 @@
-import tw, { css } from "twin.macro";
-import styled from "styled-components";
+import tw, { styled,css } from "twin.macro";
 import { Size } from "@/types/style.type";
 import { ReactNode } from "react";
 
