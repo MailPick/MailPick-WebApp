@@ -1,21 +1,28 @@
-import tw,{css} from "twin.macro";
-import styled from "styled-components";
+import { StyledText } from "./styled";
+import { fontWeightObj } from "./styled";
 
-interface TextProps{
+export interface TextProps{
   fontSize : string | number;
-  fontBold? : boolean;
+  fontWeight? : FontWeight;
+  color?:string;
   children : React.ReactNode;
 }
+export type FontWeight= keyof typeof fontWeightObj
 
-export const Text = ({fontSize, fontBold, children, ...props}:TextProps) => (
-  <StyledText fontSize={fontSize} fontBold={fontBold} {...props}>
+export const Text = ({
+  fontSize, 
+  fontWeight, 
+  color, 
+  children, 
+  ...props
+}:TextProps) => (
+  <StyledText 
+    fontSize={fontSize} 
+    fontWeight={fontWeight} 
+    color={color} 
+    {...props}
+  >
     {children}
   </StyledText>
 )
 
-export const StyledText = styled.p<TextProps>(({fontSize,fontBold})=>[
-  css`
-    font-size: ${typeof fontSize === 'number' ? `${fontSize}px` : (fontSize || '1rem')};
-  `,
-  fontBold && tw`font-bold`
-])
