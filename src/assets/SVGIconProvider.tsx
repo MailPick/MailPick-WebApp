@@ -46,7 +46,7 @@ const spriteSvgCode = (
       <path 
         d="M11.35 10.25L8.50002 6.19995H6.15002V13.8H8.65002V9.74995L11.5 13.8H13.85V6.19995H11.35V10.25Z" 
         fill="#03C75A"
-        transform="translate(-7.5,-8) scale(2)"/>
+        transform="translate(-8,-8) scale(2)"/>
     </symbol>
     <symbol id="google" viewBox="0 0 48 48">
       <path fill="#fbc02d"
