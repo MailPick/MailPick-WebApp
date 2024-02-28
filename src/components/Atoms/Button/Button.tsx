@@ -1,17 +1,12 @@
-import styled from "styled-components";
-import {buttonVariants,buttonSize,baseStyle,ButtonVariant,ButtonSize} from "./styled";
+import {StyledButton} from "./styled";
+export type ButtonVariant = "primary" | "danger" | "warning" | "success" | "default";
+export type ButtonSize = "sm"|"md"|"lg";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   children:React.ReactNode;
   variant?: ButtonVariant;
   size?:ButtonSize;
 } 
-
-const StyledButton = styled.button<ButtonProps>(({ variant, size }) => [
-  baseStyle,
-  size && buttonSize[size],
-  variant && buttonVariants[variant]
-]);
 
 export const Button = ({
   children,
