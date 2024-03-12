@@ -5,8 +5,8 @@ export const EmailIconBox = tw.div`
   justify-center 
   items-center 
   rounded-full 
-  w-8
-  h-8
+  w-[32px]
+  h-[32px]
   p-1
   border-none
   overflow-hidden
@@ -14,8 +14,8 @@ export const EmailIconBox = tw.div`
 `;
 
 export const ImgBox = tw.div`
-  w-8
-  h-8
+  w-[32px]
+  h-[32px]
   overflow-hidden
   rounded-full
   border-none

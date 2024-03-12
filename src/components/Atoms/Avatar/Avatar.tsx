@@ -1,15 +1,19 @@
-import Icon from "../Icon/Icon";
+import Icon from "../Icon";
 import { EmailIconBox, Img, ImgBox } from "./styled";
 import useEmailIcon from "@/hooks/useEmailIcon";
 
 interface AvatarProp {
   emailIconUrl?: string;
-  email:string
+  email:string;
+  width?:string;
+  height?:string;
 }
 
 const Avatar = ({
   emailIconUrl,
-  email
+  email,
+  width,
+  height
   }:AvatarProp) => {
   const emailIconId = useEmailIcon(email)
   return(
@@ -21,7 +25,7 @@ const Avatar = ({
         </ImgBox>
       ):(
         <EmailIconBox>
-          <Icon id={emailIconId} width="28" height="28"/>
+          <Icon id={emailIconId} width={width} height={height}/>
         </EmailIconBox>
       )
     }
