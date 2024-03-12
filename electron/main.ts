@@ -1,32 +1,71 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
 import path from 'node:path'
 
-// The built directory structure
-//
-// ├─┬─┬ dist
-// │ │ └── index.html
-// │ │
-// │ ├─┬ dist-electron
-// │ │ ├── main.js
-// │ │ └── preload.js
-// │
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.VITE_PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public')
 
-
 let win: BrowserWindow | null
 
-// 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
 function createWindow() {
-  win = new BrowserWindow({ //창을 생성하고 관리하는 모듈
+  win = new BrowserWindow({ 
+    width: 1600,
+    height: 900,
+    minWidth: 800,
+    minHeight: 600,
+    // titleBarStyle: 'hidden',
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   })
   win.webContents.openDevTools()
+  //menu
+  const template: Electron.MenuItemConstructorOptions[] = [
+    {
+      label: "File",
+      submenu: [
+        {
+          label: "New",
+          accelerator: "CmdOrCtrl+N",
+          click: () => {
+            win?.webContents.send('new-file')
+          }
+        },
+        {
+          label: "Open",
+          accelerator: "CmdOrCtrl+O",
+          click: () => {
+            win?.webContents.send('open-file')
+          }
+        },
+        {
+          label: "Save",
+          accelerator: "CmdOrCtrl+S",
+          click: () => {
+            win?.webContents.send('save-file')
+          }
+        },
+        {
+          label: "Save As",
+          accelerator: "CmdOrCtrl+Shift+S",
+          click: () => {
+            win?.webContents.send('save-as-file')
+          }
+        },
+        {
+          label: "Exit",
+          accelerator: "CmdOrCtrl+Q",
+          click: () => {
+            app.quit()
+          }
+        }
+      ]
+    }
+  ];
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 
   // Test active push message to Renderer-process.
   win.webContents.on('did-finish-load', () => {
@@ -41,11 +80,6 @@ function createWindow() {
   }
 }
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
-// window, linux일경우 app.quit()으로인해 프로그램종료
-// mac os에 있으면 darwin true
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
