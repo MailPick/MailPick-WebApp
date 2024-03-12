@@ -1,2 +1,2 @@
-import Svg from "./Icon";
-export default Svg;
+import Icon from "./Icon";
+export default Icon;
