@@ -9,7 +9,7 @@ const useEmailIcon = (email:string) => {
     } else if(domain.includes("google") || domain.includes("gmail")){
       return "google"
     } else if(domain.includes("hanmail") || domain.includes("daum")){
-      return "daum"
+      return "daum.png"
     } else{
       return "user"
     }
