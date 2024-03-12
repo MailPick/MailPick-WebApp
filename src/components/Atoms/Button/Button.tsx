@@ -8,7 +8,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?:ButtonSize;
 } 
 
-export const Button = ({
+const Button = ({
   children,
   variant = "default",
   size = "md",
@@ -20,6 +20,8 @@ export const Button = ({
     </StyledButton>
   )
 }
+
+export default Button;
 
 
 
