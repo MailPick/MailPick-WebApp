@@ -7,29 +7,30 @@ import {
   AvatarBox,
   EmailBox,
   TimeBox,
-  Time
 } from "./styled";
 import Vertical from "@/components/Atoms/VerticalBar";
 import Avatar from "@/components/Atoms/Avatar";
+import Text from "@/components/Atoms/Text";
+import tw from "twin.macro";
 
 interface Props{
-  name:string;
-  title:string;
-  content:string;
+  from:string;
+  subject:string;
+  plain:string;
+  date:string;
   email:string;
   emailIconUrl?:string;
   verticalColor:string;
-  time:string;
 }
 
 const EmailCard = ({
-  name,
-  title,
-  content,
+  from,
+  subject,
+  plain,
+  date,
   email,
   emailIconUrl,
   verticalColor,
-  time
 }:Props) => {
   return(
     <CardContainer>
@@ -40,15 +41,15 @@ const EmailCard = ({
         <Avatar email={email} emailIconUrl={emailIconUrl}/>
       </AvatarBox>
       <EmailBox>
-        <Name fontSize="14px" fontWeight={"semibold"}>{name}</Name>
-        <Title fontSize="12px" fontWeight={"medium"}>{title}</Title>
-        <Content fontSize="12px" fontWeight={"regular"}>{content}</Content>
+        <Name fontSize="14px" fontWeight={"semibold"}>{from}</Name>
+        <Title fontSize="12px" fontWeight={"medium"}>{subject}</Title>
+        <Content fontSize="12px" fontWeight={"regular"}>{plain}</Content>
       </EmailBox>
       <TimeBox>
-        <Time fontSize="12px" fontWeight="light">{time}</Time>
+        <Time fontSize="12px" fontWeight="light">{date}</Time>
       </TimeBox>
     </CardContainer>
   )
 }
-
+const Time=tw(Text)`text-gray-500`
 export default EmailCard;
