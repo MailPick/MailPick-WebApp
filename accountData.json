@@ -1,0 +1,24 @@
+{
+  "accounts": [
+    {
+      "userId": "1",
+      "account": "hyeonu030334@naver.com",
+      "identifyColor": "#D96459"
+    },
+    {
+      "userId": "2",
+      "account": "hyeonu030334@gmail.com",
+      "identifyColor": "#F2AE72"
+    },
+    {
+      "userId": "3",
+      "account": "hyeonu030334@hanmail.net",
+      "identifyColor": "#F2E394"
+    },
+    {
+      "userId": "4",
+      "account": "hyeonu030334@astro.com",
+      "identifyColor": "#588C73"
+    }
+  ]
+}
