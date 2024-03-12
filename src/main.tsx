@@ -1,18 +1,28 @@
 import React from 'react'
 // import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import Main from './pages/Main/Main.tsx'
 import './index.css'
-// import GlobalStyles from './styles/GlobalStyles.tsx'
+import GlobalStyles from './styles/GlobalStyles.tsx'
 import { createRoot } from 'react-dom/client'
 import GlobalSVGProvider from './assets/SVGIconProvider.tsx'
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 const container = document.getElementById('root')
 const root = createRoot(container!)
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Main/>,
+  },
+])
+const queryClient = new QueryClient()
 root.render(
   <React.StrictMode>
-    {/* <GlobalStyles/> */}
-    <App />
-    <GlobalSVGProvider/>
+    <QueryClientProvider client={queryClient}>
+      <GlobalStyles/>
+      <RouterProvider router={router}/>
+      <GlobalSVGProvider/>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
 
