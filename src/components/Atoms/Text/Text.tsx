@@ -7,7 +7,7 @@ export interface TextProps{
   color?:string;
   children : React.ReactNode;
 }
-export type FontWeight= keyof typeof fontWeightObj
+type FontWeight= keyof typeof fontWeightObj
 
 export const Text = ({
   fontSize, 
