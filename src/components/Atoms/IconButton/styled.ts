@@ -11,6 +11,7 @@ export const StyledIconButton = styled.div<StyledIconButtonProps>`
     justify-center 
     w-[36px] h-[36px] 
     rounded-md 
+    select-none
     `
   }
   
@@ -21,5 +22,5 @@ export const StyledIconButton = styled.div<StyledIconButtonProps>`
     ${tw`text-blue-500 bg-blue-500/20`}
   }
   
-  ${({ $isActive }) => $isActive?tw`text-blue-500 bg-blue-500/20` : tw`text-gray-500`}
+  ${({ $isActive }) => $isActive?tw`text-blue-500 bg-blue-500/20` : tw`text-gray-400`}
 `;
