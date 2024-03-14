@@ -25,7 +25,7 @@ const getEmailFirstText = (email: string) => {
 };
 
 interface StyledTextProps {
-  identifyColor?: string;
+  $identifyColor?: string;
 }
 const StyledText = styled.p<StyledTextProps>`
   @font-face {
@@ -39,8 +39,9 @@ const StyledText = styled.p<StyledTextProps>`
           url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.ttf') format("truetype");
     font-display: swap;
 } 
+
   ${tw`text-[20px] select-none p-0 m-0`}
-  color: ${({ identifyColor }) => identifyColor || 'black'};
+  color: ${({ $identifyColor }) => $identifyColor || 'black'};
   font-family: 'GmarketSans', sans-serif;
 `;
 
@@ -55,7 +56,7 @@ const TextIconButton = ({
 
   return(
     <StyledIconButton onClick={onClick} $isActive={isActive} {...props}>
-      <StyledText identifyColor={identifyColor}>
+      <StyledText $identifyColor={identifyColor}>
         {emailFirstText}
       </StyledText>
     </StyledIconButton>
