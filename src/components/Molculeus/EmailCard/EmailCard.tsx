@@ -7,11 +7,10 @@ import {
   AvatarBox,
   EmailBox,
   TimeBox,
+  Time
 } from "./styled";
 import Vertical from "@/components/Atoms/VerticalBar";
 import Avatar from "@/components/Atoms/Avatar";
-import Text from "@/components/Atoms/Text";
-import tw from "twin.macro";
 
 interface Props{
   from:string;
@@ -51,5 +50,5 @@ const EmailCard = ({
     </CardContainer>
   )
 }
-const Time=tw(Text)`text-gray-500`
+
 export default EmailCard;
