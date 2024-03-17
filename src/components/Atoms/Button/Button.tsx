@@ -4,6 +4,7 @@ export type ButtonSize = "sm"|"md"|"lg";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   children:React.ReactNode;
+  onClick?: () => void;
   variant?: ButtonVariant;
   size?:ButtonSize;
 } 
@@ -12,10 +13,11 @@ const Button = ({
   children,
   variant = "default",
   size = "md",
-  ...rest
+  onClick,
+  ...props
 }:ButtonProps) => {
   return(
-    <StyledButton variant={variant} size={size} {...rest}>
+    <StyledButton variant={variant} size={size} onClick={onClick} {...props}>
       {children}
     </StyledButton>
   )
