@@ -156,5 +156,133 @@
             },
             "flags": "\\Unseen"
         }
+    ],
+    "sent":[
+        {
+            "uid": "12345",
+            "from": "sender@naver.com",
+            "to": "hyeonu030334@naver.com",
+            "subject": "Test Email 1",
+            "date": "Tue, 12 Mar 2024 (Tuesday) 09:30:00 +0000",
+            "body": {
+                "plain": "This is a test email.",
+                "html": "<html><body>This is a test email.</body></html>"
+            },
+            "flags": "\\Seen"
+        },
+        {
+            "uid": "12247",
+            "from": "third@hanma.com",
+            "to": "hyeonu030334@astro.com",
+            "subject": "Test Email 3",
+            "date": "Sun, 07 Jul 2019 (Sunday) 16:00:00 +0000",
+            "body": {
+                "plain": "Yet another test email.안녕하세요 회의 제안드립니다 오전 10시 삼성역 코엑스몰 3층 카페에서 회의를 진행할 예정이오니 참석가능한분께서는 회신바랍니다 ",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        },
+        {
+            "uid": "12351",
+            "from": "third@daum.com",
+            "to": "hyeonu030334@hanmail.net",
+            "subject": "Test Email 3",
+            "date": "Fri, 07 Apr 2023 (Friday) 14:00:00 +0000",
+            "body": {
+                "plain": "Yet another test email. 2023 4월 7일",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        },
+        {
+            "uid": "12343",
+            "from": "qwer@gmail.com",
+            "to": "hyeonu030334@naver.com",
+            "subject": "Test Email 3",
+            "date": "Tue, 14 Mar 2024 (Friday) 14:45:00 +0000",
+            "body": {
+                "plain": "Yet another test email.안녕하세요 오늘은 3월 14일 입니다 오늘은 독서실알바를 가야하구요 정말 할 일이 많습니다",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        }
+    ],
+    "pin":[
+        {
+            "uid": "12343",
+            "from": "qwer@gmail.com",
+            "to": "hyeonu030334@naver.com",
+            "subject": "Test Email 3",
+            "date": "Tue, 14 Mar 2024 (Friday) 14:45:00 +0000",
+            "body": {
+                "plain": "Yet another test email.안녕하세요 오늘은 3월 14일 입니다 오늘은 독서실알바를 가야하구요 정말 할 일이 많습니다",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        },
+        {
+            "uid": "12351",
+            "from": "third@daum.com",
+            "to": "hyeonu030334@hanmail.net",
+            "subject": "Test Email 3",
+            "date": "Fri, 07 Apr 2023 (Friday) 14:00:00 +0000",
+            "body": {
+                "plain": "Yet another test email. 2023 4월 7일",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        }
+    ],
+    "draft":[
+        {
+            "uid": "12351",
+            "from": "third@daum.com",
+            "to": "hyeonu030334@hanmail.net",
+            "subject": "Test Email 3",
+            "date": "Fri, 07 Apr 2023 (Friday) 14:00:00 +0000",
+            "body": {
+                "plain": "드래프트 테스트",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        },
+        {
+            "uid": "12350",
+            "from": "elsa@gmail.com",
+            "to": "hyeonu030334@naver.com",
+            "subject": "Test Email 3",
+            "date": "Tue, 07 Mar 2023 (Tuesday) 14:00:00 +0000",
+            "body": {
+                "plain": "Yet another test email.",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        }
+    ],
+    "trash":[
+        {
+            "uid": "12247",
+            "from": "third@hanma.com",
+            "to": "hyeonu030334@astro.com",
+            "subject": "Test Email 3",
+            "date": "Sun, 07 Jul 2019 (Sunday) 16:00:00 +0000",
+            "body": {
+                "plain": "Yet another test email.안녕하세요 회의 제안드립니다 오전 10시 삼성역 코엑스몰 3층 카페에서 회의를 진행할 예정이오니 참석가능한분께서는 회신바랍니다 ",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        },
+        {
+            "uid": "12343",
+            "from": "qwer@gmail.com",
+            "to": "hyeonu030334@naver.com",
+            "subject": "Test Email 3",
+            "date": "Tue, 14 Mar 2024 (Friday) 14:45:00 +0000",
+            "body": {
+                "plain": "Yet another test email.안녕하세요 오늘은 3월 14일 입니다 오늘은 독서실알바를 가야하구요 정말 할 일이 많습니다",
+                "html": "<html><body>Yet another test email.</body></html>"
+            },
+            "flags": "\\Unseen"
+        }
     ]
 }
