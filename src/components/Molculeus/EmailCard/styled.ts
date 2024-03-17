@@ -2,7 +2,11 @@ import { StyledText } from "@/components/Atoms/Text/styled";
 import tw,{styled, css} from "twin.macro";
 import Text from "@/components/Atoms/Text";
 
-export const CardContainer = styled.div`
+interface IsActiveProps {
+  $isActive?: boolean;
+}
+
+export const CardContainer = styled.div<IsActiveProps>`
   ${tw`
     bg-white 
     flex 
@@ -14,9 +18,8 @@ export const CardContainer = styled.div`
     w-[352px]
     h-[100px]
   `}
-  &:active {
-    ${tw`text-white bg-blue-500`}
-  }
+  ${({$isActive}) => $isActive && tw`bg-blue-500 text-white`}
+  
 `;
 
 export const VerticalBox = tw.div`pl-[4px] pr-[4px] pt-[8px]`;
@@ -24,11 +27,9 @@ export const AvatarBox = tw.div`pr-[8px] pt-[12px]`;
 export const EmailBox = tw.div`flex flex-col pt-[12px] pr-[20px]`
 export const TimeBox =tw.div`absolute right-[12px] top-[12px]`
   
-export const Time=styled(Text)`
+export const Time=styled(Text)<IsActiveProps>`
   ${tw`text-gray-600`}
-  ${CardContainer}:active & {
-    color: white; 
-  }
+  ${({$isActive}) => $isActive && tw`text-white`}
 `
 
 const truncatingTextStyles = (lineClamp = 1) => css`
