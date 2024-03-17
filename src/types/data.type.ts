@@ -3,13 +3,12 @@ export interface EmailType {
   from:string;
   to:string;
   subject:string;
-  date:Date;
+  date:string;
   body:{
     plain:string;
     html:string;
   };
   flags:string;
-  id:string;
 }
 
 export interface AccountType {
