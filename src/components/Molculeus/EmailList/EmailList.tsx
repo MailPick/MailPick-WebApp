@@ -1,19 +1,31 @@
-import { useEmailQuery } from "@/hooks/useEmailQuery";
-import EmailCard from "@/components/Molculeus/EmailCard/EmailCard";
 import { EmailType } from "@/types/data.type";
 import { useAccountStore } from "@/store/accountStore";
-import {groupEmailsByDate, formatDateForEmailCard,} from "@/services/dateHelper";
-const Inbox = () => {
-  const { data: emails } = useEmailQuery(["inbox"], "inbox");
-  const accounts = useAccountStore((state) => state.account);
+import EmailCard from "../EmailCard";
+import { groupEmailsByDate,formatDateForEmailCard } from "@/services/dateHelper";
+import { DateGroupTitle } from "./styled";
+import { useActiveEmailStore } from "@/store/activeEmailStore";
+interface Props{
+  emails: EmailType[];
+  userInput: string;
+}
 
+const EmailList = ({emails,userInput}:Props) => {
+  const {activeEmail,setActiveEmail} = useActiveEmailStore();
+  const filteredEmails = emails?.filter((email: EmailType) => {
+    const searchQuery = userInput.toLowerCase();
+    return  email.from.toLowerCase().includes(searchQuery) ||
+            email.subject.toLowerCase().includes(searchQuery) ||
+            email.body.plain.toLowerCase().includes(searchQuery);
+  });
+  const accounts = useAccountStore((state) => state.account);
   const findIdentifyColor = (emailTo:string) => {
     const accountMatch = accounts.find((account) => account.account === emailTo);
     return accountMatch ? accountMatch.identifyColor : undefined;
   };
-  
-  const emailsGroupedByDate = groupEmailsByDate(emails);
-  return (
+  const emailsGroupedByDate = groupEmailsByDate(filteredEmails);
+
+  console.log("selectEmail",activeEmail)
+  return(
     <>
       {Object.entries(emailsGroupedByDate).map(([dateGroup, emails]) => (
         <div key={dateGroup}>
@@ -32,6 +44,8 @@ const Inbox = () => {
                   date={formattedDate}
                   email={email.from}
                   verticalColor={identifyColor || 'defaultColor'}
+                  onClick={() => setActiveEmail(email)}
+                  isActive={email.uid === activeEmail?.uid}
                 />
               </div>
             );
@@ -42,14 +56,4 @@ const Inbox = () => {
   );
 };
 
-
-export default Inbox;
-
-import tw from "twin.macro";
-import { StyledText } from "@/components/Atoms/Text/styled";
-
-const DateGroupTitle =tw(StyledText)`
-  px-[10px]
-  py-[4px]
-  text-gray-400
-`
+export default EmailList;

@@ -7,13 +7,12 @@ import {
   AvatarBox,
   EmailBox,
   TimeBox,
+  Time
 } from "./styled";
 import Vertical from "@/components/Atoms/VerticalBar";
 import Avatar from "@/components/Atoms/Avatar";
-import Text from "@/components/Atoms/Text";
-import tw from "twin.macro";
 
-interface Props{
+export interface Props{
   from:string;
   subject:string;
   plain:string;
@@ -21,6 +20,8 @@ interface Props{
   email:string;
   emailIconUrl?:string;
   verticalColor:string;
+  isActive?:boolean;
+  onClick?: () => void;
 }
 
 const EmailCard = ({
@@ -31,9 +32,11 @@ const EmailCard = ({
   email,
   emailIconUrl,
   verticalColor,
+  onClick,
+  isActive = false
 }:Props) => {
   return(
-    <CardContainer>
+    <CardContainer $isActive={isActive} onClick={onClick}>
       <VerticalBox>
         <Vertical color={verticalColor}/>
       </VerticalBox>
@@ -46,10 +49,10 @@ const EmailCard = ({
         <Content fontSize="12px" fontWeight={"regular"}>{plain}</Content>
       </EmailBox>
       <TimeBox>
-        <Time fontSize="12px" fontWeight="light">{date}</Time>
+        <Time fontSize="12px" fontWeight="light" $isActive={isActive}>{date}</Time>
       </TimeBox>
     </CardContainer>
   )
 }
-const Time=tw(Text)`text-gray-500`
+
 export default EmailCard;

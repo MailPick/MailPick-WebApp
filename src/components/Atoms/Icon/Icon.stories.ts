@@ -26,6 +26,29 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const RefreshIcon: Story = {
+  args:{
+    id:"refresh",
+    width:"60px",
+    height:"60px"
+  }
+}
+
+export const FilterIcon: Story = {
+  args:{
+    id:"filter",
+    width:"60px",
+    height:"60px"
+  }
+}
+export const SearchIcon: Story = {
+  args:{
+    id:"search",
+    width:"60px",
+    height:"60px"
+  }
+
+}
 export const BiInboxIcon: Story = {
   args: {
     id:"biInbox",
@@ -98,10 +121,13 @@ export const GoogleIcon: Story = {
     height:"60px"
   }
 }
+
+
 export const DaumIcon: Story = {
   args:{
-    id:"daum",
-    width:"60px",
-    height:"60px"
+    id:"daum.png",
+    pngWidth:"60px",
+    pngHeight:"60px"
   }
 }
+

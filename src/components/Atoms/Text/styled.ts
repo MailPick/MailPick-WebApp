@@ -21,5 +21,5 @@ export const StyledText = styled.p<TextProps>(({
     ${color ? `color:${color}`:""};
   `,
   fontWeight && fontWeightObj[fontWeight],
-  tw`p-0 m-0`
+  tw`p-0 m-0 leading-[20px]`
 ])

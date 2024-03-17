@@ -3,24 +3,26 @@ import { Container,Hr } from "./styled"
 import TextIconButton from "@/components/Atoms/TextIconButton/TextIconButton";
 import useAccountQuery from "@/hooks/useAccountQuery";
 import { AccountType } from "@/types/data.type";
+import { useSelectSectionStore } from "@/store/selectSectionStore";
 
-interface Props{
-  setSelectedSection:(section:string)=>void;
-}
-
-const Sidebar = ({setSelectedSection}:Props) => {
+const Sidebar = () => {
   const {data} = useAccountQuery();
+  const {selectSection, setSelectSection} = useSelectSectionStore();
+  const handleClick = (id:string) => {
+    setSelectSection(id);
+  }
+  
   return (
     <Container>
-      <IconButton id="hamburger"/>
-      <IconButton id="calendarBlank"/>
+      <IconButton id="hamburger" onClick={()=>{handleClick("menu")}} isActive={selectSection == "menu"}/>
+      <IconButton id="calendarBlank" onClick={()=>{handleClick("calendar")}} isActive={selectSection == "calendar"}/>
       <Hr/>
-      <IconButton id="notePencil"/>
-      <IconButton id="biInbox" onClick={()=>setSelectedSection("inbox")}/>
-      <IconButton id="paperPlaneTilt" onClick={()=>setSelectedSection("sent")}/>
-      <IconButton id="pushPin" onClick={()=>setSelectedSection("pin")}/>
-      <IconButton id="file"/>
-      <IconButton id="trash"/>
+      <IconButton id="notePencil" onClick={()=>{handleClick("mail")}} isActive={selectSection == "mail"}/>
+      <IconButton id="biInbox" onClick={()=>{handleClick("inbox")}} isActive={selectSection == "inbox"}/>
+      <IconButton id="paperPlaneTilt" onClick={()=>handleClick("sent")} isActive={selectSection == "sent"}/>
+      <IconButton id="pushPin" onClick={()=>handleClick("pin")} isActive={selectSection == "pin"}/>
+      <IconButton id="file" onClick={()=>handleClick("draft")} isActive={selectSection == "draft"}/>
+      <IconButton id="trash" onClick={()=>{handleClick("trash")}} isActive={selectSection == "trash"}/>
       {
         data && data.map((account:AccountType) => {
           return (
@@ -28,6 +30,8 @@ const Sidebar = ({setSelectedSection}:Props) => {
             <TextIconButton 
               email={account.account}
               identifyColor={account.identifyColor}
+              onClick={()=>{handleClick(account.account)}}
+              isActive={selectSection == account.account}
             />
             </div>
         )})
