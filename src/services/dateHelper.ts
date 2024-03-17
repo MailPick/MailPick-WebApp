@@ -5,37 +5,56 @@ const isToday = (date: Date, today: Date) => {
         date.getMonth() === today.getMonth() &&
         date.getFullYear() === today.getFullYear();
 };
+const isThisWeek = (date: Date, now: Date) => {
+  const thisWeekStart = new Date(now);
+  // 이번 주 월요일로 설정
+  thisWeekStart.setDate(thisWeekStart.getDate() - thisWeekStart.getDay() + 1);
+  thisWeekStart.setHours(0, 0, 0, 0);
 
-const isYesterday = (date: Date, yesterday: Date) => {
-  return date.getDate() === yesterday.getDate() &&
-         date.getMonth() === yesterday.getMonth() &&
-         date.getFullYear() === yesterday.getFullYear();
+  const yesterday = new Date(now);
+  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setHours(23, 59, 59, 999);  // 어제의 마지막 시간으로 설정
+
+  return date >= thisWeekStart && date <= yesterday;
 };
+
+const isLastWeek = (date: Date, now: Date) => {
+  const lastWeekStart = new Date(now);
+  // 지난 주 월요일로 설정
+  lastWeekStart.setDate(lastWeekStart.getDate() - lastWeekStart.getDay() - 6);
+  lastWeekStart.setHours(0, 0, 0, 0);
+
+  const lastWeekEnd = new Date(now);
+  // 이번 주 월요일로 설정
+  lastWeekEnd.setDate(lastWeekEnd.getDate() - lastWeekEnd.getDay() + 1);
+  lastWeekEnd.setHours(0, 0, 0, 0);
+
+  return date >= lastWeekStart && date < lastWeekEnd;
+};
+
 //이메일 목록에서 날짜를 포맷팅하는 함수
-export const formatEmailDateforTitle = (emailDateString: Date) => {
+export const formatEmailDateForTitle = (emailDateString: string) => {
   const date = new Date(emailDateString);
   const now = new Date();
-  // 'yesterday'와 'oneYearAgo'를 계산하기 전에 'now'의 원본 값을 복사해야 함
   const today = new Date(now);
-  const yesterday = new Date(now.setDate(now.getDate() - 1));
-  const oneYearAgo = new Date(now.setFullYear(now.getFullYear() - 1));
+  const currentYear = now.getFullYear();
 
   if (isToday(date, today)) {
-    // 오늘 날짜에 대한 조건을 체크하여 "오늘"로 반환
     return '오늘';
-  } else if (isYesterday(date, yesterday)) {
-    // 어제 날짜에 대한 조건을 체크하여 "어제"로 반환
-    return '어제';
-  } else if (date > oneYearAgo) {
-    // 1년 이내의 날짜에 대해서는 월과 일을 반환
-    return date.toLocaleDateString('ko-KR', { month: 'long'});
+  } else if (isThisWeek(date, now)) {
+    return '이번주';
+  } else if (isLastWeek(date, new Date())) {
+    return '지난주';
+  } else if (date.getFullYear() === currentYear) {
+    // 현재 연도와 같은 경우, 월만 표시
+    return date.toLocaleDateString('ko-KR', { month: 'long' });
   } else {
-    // 1년 이전의 날짜에 대해서는 연도를 포함하여 반환
-    return date.toLocaleDateString('ko-KR', { year: 'numeric' , month: 'long'});
+    // 현재 연도와 다른 경우, 연도와 월을 표시
+    return date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long' });
   }
 };
 //카드 형식의 이메일 목록에서 날짜를 포맷팅하는 함수
-export const formatDateForEmailCard = (emailDateString: Date) => {
+export const formatDateForEmailCard = (emailDateString: string) => {
   const emailDate = new Date(emailDateString);
   const now = new Date();
   const today = new Date(now);
@@ -63,19 +82,26 @@ export const formatDateForEmailCard = (emailDateString: Date) => {
   }
 };
 
-//이메일 목록을 날짜별로 그룹화하는 함수
 export const groupEmailsByDate = (emails: EmailType[] = []): Record<string, EmailType[]> => {
   const emailsGrouped: Record<string, EmailType[]> = {};
+
   if (!emails || !Array.isArray(emails)) {
     return emailsGrouped;
   }
+
+  // 이메일을 날짜별로 그룹화
   emails.forEach((email) => {
-    const dateGroup = formatEmailDateforTitle(email.date);
+    const dateGroup = formatEmailDateForTitle(email.date);
     if (!emailsGrouped[dateGroup]) {
       emailsGrouped[dateGroup] = [];
     }
     emailsGrouped[dateGroup].push(email);
   });
+
+  // 각 그룹 내의 이메일을 날짜 오름차순으로 정렬
+  Object.keys(emailsGrouped).forEach((dateGroup) => {
+    emailsGrouped[dateGroup].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  });
+
   return emailsGrouped;
 };
-
