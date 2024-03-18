@@ -11,9 +11,8 @@ const useEmailIcon = (email:string) => {
     } else if(domain.includes("hanmail") || domain.includes("daum")){
       return "daum.png"
     } else{
-      return "user"
+      return email[0].toUpperCase()
     }
-    
   }
   return getDomainLogo(email) 
 }
