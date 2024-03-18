@@ -1,11 +1,13 @@
 import Sidebar from "@/components/Organism/Sidebar";
 import tw from "twin.macro";
 import ViewEmailList from "@/components/Organism/ViewEmailList";
+import ViewEmailDetail from "@/components/Organism/ViewEmailDetail";
 const Main = () => {
   return(
     <Container>
       <Sidebar/>
       <ViewEmailList/>
+      <ViewEmailDetail/>
     </Container>
   )
 }
