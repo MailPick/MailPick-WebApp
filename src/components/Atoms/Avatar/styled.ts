@@ -1,16 +1,23 @@
-import tw from "twin.macro";
+import tw,{styled} from "twin.macro";
+interface EmailIconBoxProps{
+  $boxWidth?:string;
+  $boxHeight?:string;
+  $boxPadding?:string;
+}
 
-export const EmailIconBox = tw.div`
+export const EmailIconBox = styled.div<EmailIconBoxProps>`
+${tw`
   flex 
   justify-center 
   items-center 
   rounded-full 
-  w-[32px]
-  h-[32px]
-  p-1
   border-none
   overflow-hidden
-  bg-gray-100
+  bg-gray-50
+`}
+  ${({$boxWidth})=>$boxWidth && `width:${$boxWidth};`}
+  ${({$boxHeight})=>$boxHeight && `height:${$boxHeight};`}
+  ${({$boxPadding})=>$boxPadding && `padding:${$boxPadding};`}
 `;
 
 export const ImgBox = tw.div`
