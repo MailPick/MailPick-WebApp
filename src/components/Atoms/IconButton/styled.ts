@@ -1,8 +1,9 @@
 import tw, { styled } from 'twin.macro';
 
 interface StyledIconButtonProps {
-  width?:string;
-  height?:string;
+  $width?:string;
+  $height?:string;
+  $padding?:string;
   $isActive?: boolean;
 }
 
@@ -14,8 +15,9 @@ export const StyledIconButton = styled.div<StyledIconButtonProps>`
     rounded-md 
     select-none
   `}
-  width: ${({ width }) => width || '36px'};
-  height: ${({ height }) => height || '36px'};
+  width: ${({ $width }) => $width || '44px'};
+  height: ${({ $height }) => $height || '44px'};
+  padding: ${({ $padding }) => $padding};
   &:hover {
     /* ${tw`bg-gray-300/50`} */
   }
