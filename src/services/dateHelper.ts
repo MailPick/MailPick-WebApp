@@ -100,8 +100,28 @@ export const groupEmailsByDate = (emails: EmailType[] = []): Record<string, Emai
 
   // 각 그룹 내의 이메일을 날짜 오름차순으로 정렬
   Object.keys(emailsGrouped).forEach((dateGroup) => {
-    emailsGrouped[dateGroup].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    emailsGrouped[dateGroup].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   });
 
   return emailsGrouped;
 };
+
+
+export const formatDateForEmailDetail = (dateString:string) => {
+  const date = new Date(dateString);
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+  } as const;
+
+  // Intl.DateTimeFormat을 사용하여 날짜 형식을 지정합니다. 'ko-KR' 로케일을 사용합니다.
+  const formatter = new Intl.DateTimeFormat('ko-KR', options);
+  const formattedDate = formatter.format(date);
+  console.log(formattedDate);
+  return formattedDate
+}
