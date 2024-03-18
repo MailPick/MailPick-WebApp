@@ -5,8 +5,6 @@ export const IconId = {
   BiInbox:"biInbox",
   File:"file",
   Hamburger:"hamburger",
-  List1:"list1",
-  List2:"list2",
   PaperPlaneTilt:"paperPlaneTilt",
   PushPin:"pushPin",
   Trash:"trash",
@@ -18,15 +16,21 @@ export const IconId = {
   Filter:"filter",
   Refresh:"refresh",
   Search:"search",
+  Archive:"archive",
+  DoubleForward:"doubleForward",
+  Forward:"forward",
+  Reply:"reply",
+  Snooze:"snooze",
+  More:"more",
   Daum:"daum.png"  
 } as const
 
 export type IconId = typeof IconId[keyof typeof IconId]
 
 interface IconProps{
-  id : IconId;
-  width? : string;
-  height? : string;
+  id : IconId | string;
+  svgWidth? : string;
+  svgHeight? : string;
   pngWidth? : string;
   pngHeight? : string;
   space?:string;
@@ -34,19 +38,19 @@ interface IconProps{
 
 const Icon = ({
   id,
-  width = "24px",
-  height = "24px",
-  pngWidth = "20px",
-  pngHeight = "20px",
+  svgWidth = "24px",
+  svgHeight = "24px",
+  pngWidth = "22px",
+  pngHeight = "22px",
   ...props
 }:IconProps) => {
   const [name, ext] = id.split(".");
   if(ext === "png"){
     return(
       <Png 
-        src={`/src/assets/png/${name}.png`} 
-        alt={name} 
-        width={pngWidth} 
+        src={`/src/assets/png/${name}.png`}
+        alt={name}
+        width={pngWidth}
         height={pngHeight}
         {...props}
       />
@@ -54,7 +58,7 @@ const Icon = ({
   }
   else{
     return(
-      <svg width={width} height={height} fill="currentColor"{...props}>
+      <svg width={svgWidth} height={svgHeight} fill="currentColor"{...props}>
         <use href={`#${name}`}/>
       </svg>
     )
