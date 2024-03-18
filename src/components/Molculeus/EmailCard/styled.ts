@@ -10,7 +10,7 @@ export const CardContainer = styled.div<IsActiveProps>`
   ${tw`
     bg-white 
     flex 
-    rounded-lg
+    rounded-[12px]
     pl-[8px] 
     overflow-hidden 
     select-none
