@@ -33,13 +33,18 @@ const backgroundImage = {
 const backgroundPosition = {
   "left-16": "left 16px center"
 }
+
+const boxShadow = {
+  "card" : "0px 0px 20px 0px rgba(0, 74, 166, 0.08); "
+}
 export default {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
       colors,
       backgroundImage,
-      backgroundPosition
+      backgroundPosition,
+      boxShadow
     }
   },
   plugins: [],
