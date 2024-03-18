@@ -1,9 +1,10 @@
 import tw,{styled} from "twin.macro"
 export const Container = styled.div`
   ${tw`flex 
-  flex-col 
+  flex-col
+  shrink-0
   items-center 
-  gap-[16px] 
+  gap-[8px] 
   pt-[52px] 
   w-[80px]
   overflow-y-auto
