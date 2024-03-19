@@ -27,7 +27,7 @@ const getEmailFirstText = (email: string) => {
 interface StyledTextProps {
   $identifyColor?: string;
 }
-const StyledText = styled.p<StyledTextProps>`
+export const StyledText = styled.p<StyledTextProps>`
   @font-face {
     font-family: 'GmarketSans';
     font-weight: 700;

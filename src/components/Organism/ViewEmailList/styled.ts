@@ -5,6 +5,7 @@ import tw, { styled } from 'twin.macro'
 export const Container = tw.div`
   flex 
   flex-col
+  shrink-0
   pt-[36px]
   pl-[16px]
   pr-[8px]
@@ -15,6 +16,7 @@ export const Container = tw.div`
   shadow-lg
   mt-[28px]
   mb-[28px]
+  mr-[20px]
 `
 export const Header = tw.div`
   flex
@@ -62,7 +64,7 @@ export const RefreshIcon = styled(IconButton)`
       transform: rotate(-270deg);
     }
   }
-  ${tw`ml-auto`}
+  ${tw`ml-auto w-[40px] h-[40px]`}
   
   & svg{
     ${tw`transition duration-500 ease-in-out transform`}
@@ -72,4 +74,5 @@ export const RefreshIcon = styled(IconButton)`
   }
 `
 export const FilterIcon = tw(IconButton)`
+  w-[40px] h-[40px]
 `

@@ -5,16 +5,27 @@ import useEmailIcon from "@/hooks/useEmailIcon";
 interface AvatarProp {
   emailIconUrl?: string;
   email:string;
-  width?:string;
-  height?:string;
+  boxPadding?:string;
+  boxWidth?:string;
+  boxHeight?:string;
+  pngWidth?:string;
+  pngHeight?:string;
+  svgWidth?:string;
+  svgHeight?:string;
 }
 
 const Avatar = ({
   emailIconUrl,
   email,
-  width,
-  height
+  boxWidth = "32px",
+  boxHeight = "32px",
+  boxPadding = "2px",
+  pngWidth,
+  pngHeight,
+  svgWidth,
+  svgHeight,
   }:AvatarProp) => {
+
   const emailIconId = useEmailIcon(email)
   return(
     <>
@@ -24,13 +35,25 @@ const Avatar = ({
           <Img src={emailIconUrl}/>
         </ImgBox>
       ):(
-        <EmailIconBox>
-          <Icon id={emailIconId} width={width} height={height}/>
+        <EmailIconBox $boxWidth={boxWidth} $boxHeight={boxHeight} $boxPadding={boxPadding}>
+          {["naver", "google", "daum.png"].includes(emailIconId) ? (
+            <Icon
+              id={emailIconId}
+              svgWidth={svgWidth}
+              svgHeight={svgHeight}
+              pngWidth={pngWidth}
+              pngHeight={pngHeight}
+            />
+          ) : (
+            <div tw="text-xl text-gray-400">{emailIconId}</div> 
+          )}
         </EmailIconBox>
       )
     }
     </>
   )
 }
+
+// const TextIcon = tw(StyledText)`text-gray-400 text-lg`
 
 export default Avatar; 
