@@ -1,14 +1,23 @@
 import tw,{styled} from "twin.macro"
-export const Container = styled.div`
+interface ContainerProps{
+  $isExpanded?:boolean
+}
+export const SideBarContainer = styled.div<ContainerProps>`
   ${tw`flex 
   flex-col
   shrink-0
   items-center 
   gap-[8px] 
   pt-[52px] 
-  w-[80px]
   overflow-y-auto
-  max-h-screen`}
+  max-h-screen
+  w-[80px]
+  static
+  `
+  
+  }
+  ${({$isExpanded}) => $isExpanded && tw`w-[220px] absolute pl-[18px] h-full bg-gray-main z-50 transition duration-200 items-start`}
+
   &::-webkit-scrollbar {
     width: 4px;
   }
