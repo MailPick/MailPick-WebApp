@@ -1,5 +1,6 @@
 import tw, { styled } from "twin.macro";
 import { StyledIconButton } from "../IconButton/styled";
+import Text from "../Text";
 
 /**
  * api에서 받아온 이메일을 받아서 첫글자를 가져와서 보여주는 컴포넌트
@@ -10,6 +11,8 @@ interface Props {
   onClick?: () => void;
   isActive?: boolean;
   identifyColor?: string;
+  text?:string;
+  fontSize?:string;
 }
 const getEmailFirstText = (email: string) => {
   const domain = email.split("@")[1];
@@ -26,6 +29,7 @@ const getEmailFirstText = (email: string) => {
 
 interface StyledTextProps {
   $identifyColor?: string;
+  fontSize?:string;
 }
 export const StyledText = styled.p<StyledTextProps>`
   @font-face {
@@ -42,6 +46,7 @@ export const StyledText = styled.p<StyledTextProps>`
 
   ${tw`text-[20px] select-none p-0 m-0`}
   color: ${({ $identifyColor }) => $identifyColor || 'black'};
+  font-size: ${({fontSize}) => fontSize || '20px'};
   font-family: 'GmarketSans', sans-serif;
 `;
 
@@ -50,15 +55,18 @@ const TextIconButton = ({
   onClick,
   isActive = false,
   identifyColor,
+  text,
+  fontSize,
   ...props
 }:Props) => {
   const emailFirstText = getEmailFirstText(email);
 
   return(
     <StyledIconButton onClick={onClick} $isActive={isActive} {...props}>
-      <StyledText $identifyColor={identifyColor}>
+      <StyledText $identifyColor={identifyColor} fontSize={fontSize}>
         {emailFirstText}
       </StyledText>
+      {text && <Text fontSize="12px" fontWeight="light">{text}</Text>}
     </StyledIconButton>
   )
 }
