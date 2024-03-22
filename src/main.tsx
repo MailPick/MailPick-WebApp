@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client'
 import GlobalSVGProvider from './assets/SVGIconProvider.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import SendMailBox from './components/Organism/SendMailBox/SendMailBox.tsx'
 const container = document.getElementById('root')
 const root = createRoot(container!)
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <Main/>,
   },
+  {
+    path: '/mailbox',
+    element: <SendMailBox/>
+  }
 ])
 const queryClient = new QueryClient()
 root.render(

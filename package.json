@@ -1,6 +1,7 @@
 {
   "name": "mailpick-webapp",
   "private": true,
+  "productName": "MailPick",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -21,6 +22,7 @@
     "@tanstack/react-query": "^5.24.8",
     "@types/dompurify": "^3.0.5",
     "dompurify": "^3.0.9",
+    "dotenv": "^16.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2",

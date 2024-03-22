@@ -2,11 +2,13 @@ import tw,{styled} from "twin.macro"
 import { Container } from "../ViewEmailList/styled"
 import Text from "@/components/Atoms/Text"
 import IconButton from "@/components/Atoms/IconButton"
+
 export const DetailContainer = styled(Container)`
   ${tw`
     w-[732px]
     pl-[20px]
     pt-[20px]
+    ml-0
     overflow-y-auto
   `}
   &::-webkit-scrollbar {
