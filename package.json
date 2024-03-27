@@ -15,12 +15,14 @@
     "build-storybook": "storybook build",
     "mock:server1": "json-server --watch inboxData.json --port 3001",
     "mock:server2": "json-server --watch accountData.json --port 3002",
-    "mock:all": "npm run mock:server1 & npm run mock:server2",
+    "mock:server3": "json-server --watch summarizedData.json --port 3003",
+    "mock:all": "npm run mock:server1 & npm run mock:server2 & npm run mock:server3",
     "json-server": "json-server --watch emailData.json --port 3001"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.24.8",
     "@types/dompurify": "^3.0.5",
+    "date-fns": "^3.6.0",
     "dompurify": "^3.0.9",
     "dotenv": "^16.4.5",
     "react": "^18.2.0",
