@@ -22,7 +22,9 @@ export const IconId = {
   Reply:"reply",
   Snooze:"snooze",
   More:"more",
-  Daum:"daum.png"  
+  Arrow:"arrow",
+  Plus:"plus",
+  Daum:"daum.png",
 } as const
 
 export type IconId = typeof IconId[keyof typeof IconId]
