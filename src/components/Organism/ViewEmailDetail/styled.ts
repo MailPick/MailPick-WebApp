@@ -5,10 +5,13 @@ import IconButton from "@/components/Atoms/IconButton"
 
 export const DetailContainer = styled(Container)`
   ${tw`
-    w-[732px]
-    pl-[20px]
+    min-w-[732px]
+    grow
+    mt-[28px]
+    mr-[20px]
+    px-[20px]
     pt-[20px]
-    ml-0
+    h-[calc(100vh-62px)]
     overflow-y-auto
   `}
   &::-webkit-scrollbar {
@@ -19,6 +22,7 @@ export const DetailContainer = styled(Container)`
     border-radius: 10px;
   }
 `
+
 
 export const EmailNavArea = tw.div`
   flex

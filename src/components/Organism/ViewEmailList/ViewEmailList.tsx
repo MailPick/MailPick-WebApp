@@ -1,5 +1,5 @@
 import MailBox from "@/components/Molculeus/MailBox";
-import { Container, Header, Input, CardList, RefreshIcon, FilterIcon, Title,InputArea } from "./styled";
+import { ViewEmailListContainer, Header, Input, CardList, RefreshIcon, FilterIcon, Title,InputArea } from "./styled";
 import { useState } from "react";
 import { useSelectSectionStore } from "@/store/selectSectionStore";
 import UserInboxMail from "@/components/Molculeus/UserInboxMail";
@@ -16,7 +16,7 @@ const ViewEmailList = () => {
   const hasMatchingAccount = account.some(acc => acc.account === selectSection);
 
   return(
-    <Container>
+    <ViewEmailListContainer>
       <Header>
         {selectSection === "inbox" && <Title fontSize="16px" fontWeight="semibold">받은 편지함 - 모든메일</Title>}
         {selectSection === "sent" && <Title fontSize="16px" fontWeight="semibold">보낸 편지함 - 모든메일</Title>}
@@ -38,7 +38,7 @@ const ViewEmailList = () => {
         {selectSection === "trash" && <MailBox userInput={userInput} queryKey={"trash"} endPoint={"trash"}/>}
         {hasMatchingAccount && <UserInboxMail userInput={userInput}/>}
       </CardList>
-    </Container>
+    </ViewEmailListContainer>
   )
 } 
 
