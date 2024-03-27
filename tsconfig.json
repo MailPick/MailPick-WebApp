@@ -29,6 +29,7 @@
       "@/assets/svg/*":["./src/assets/svg/*"],
       "@/assets/fonts/*":["./src/assets/fonts/*"],
       "@/services/*":["./src/services/*"],
+      "@/styles/*":["./src/styles/*"],
     }
   },
   "include": [

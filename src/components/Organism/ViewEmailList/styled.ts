@@ -3,28 +3,32 @@ import IconButton from '@/components/Atoms/IconButton'
 import tw, { styled } from 'twin.macro'
 
 export const Container = tw.div`
+  bg-white
+  rounded-lg
+  shadow-lg
+  
+`
+
+export const ViewEmailListContainer = tw(Container)`
   flex 
   flex-col
   shrink-0
   pt-[36px]
   pl-[16px]
   pr-[8px]
-  w-[384px] 
-  h-[calc(100vh-62px)]
-  bg-white
-  rounded-lg
-  shadow-lg
-  mt-[28px]
-  mb-[28px]
+  w-[384px]
   mr-[20px]
+  mt-[28px]
+  mb-[20px]
+  h-[calc(100vh-62px)]
 `
+
 export const Header = tw.div`
   flex
   justify-start
   items-center
   pr-[12px]
   mb-[16px]
-  
 `
 export const Input = tw.input`
   w-[344px]
