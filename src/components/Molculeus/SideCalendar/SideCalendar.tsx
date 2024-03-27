@@ -1,7 +1,7 @@
 import { Container } from "@/components/Organism/ViewEmailList/styled";
 import tw from "twin.macro";
 // import { Hr } from "@/components/Organism/Sidebar/styled";
-import "@/styles/SideCalendar.css"
+
 const SideCalendar = () => {
   return(
     <SideCalendarContainer>
