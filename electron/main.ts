@@ -38,16 +38,34 @@ function createWindow() {
         win?.webContents.reload()
       }
     },{
-      label:"DevTools",
+      label:"devtools",
       accelerator:"CmdOrCtrl+D",
       click:()=>{
         win && win.webContents.openDevTools();
       }
     },{
-      label:"CloseDevTools",
+      label:"close devtools",
       accelerator:"CmdOrCtrl+Shift+D",
       click:()=>{
         win && win.webContents.closeDevTools();
+      }
+    },{
+      label: "zoom",
+      accelerator: "CmdOrCtrl+=",
+      click: () => {
+        if (win) {
+          const currentZoom = win.webContents.getZoomFactor();
+          win.webContents.setZoomFactor(currentZoom + 0.1);
+        }
+      }
+    },{
+      label: "zoom out",
+      accelerator: "CmdOrCtrl+-",
+      click: () => {
+        if (win) {
+          const currentZoom = win.webContents.getZoomFactor();
+          win.webContents.setZoomFactor(currentZoom - 0.1);
+        }
       }
     }]
 }))
