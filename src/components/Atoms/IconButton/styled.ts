@@ -14,6 +14,7 @@ export const StyledIconButton = styled.div<StyledIconButtonProps>`
     justify-center 
     rounded-md 
     select-none
+    [> svg]:(w-[24px] h-[24px])
   `}
   width: ${({ $width }) => $width || '44px'};
   height: ${({ $height }) => $height || '44px'};

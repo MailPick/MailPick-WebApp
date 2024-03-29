@@ -18,7 +18,7 @@ const ViewEmailDetail = () => {
           <DetailContainer>
             <EmailNavArea>
               <SenderInfo>
-                <Avatar email={activeEmail.from} boxWidth="40px" boxHeight="40px" boxPadding="4px" svgWidth="32px" svgHeight="32px" pngWidth="26px" pngHeight="26px"/>
+                <Avatar email={activeEmail.from} boxWidth="40px" boxHeight="40px" boxPadding="4px" pngWidth="26px" pngHeight="26px"/>
                 <FromToArea>
                   <FromEmailText fontSize="16px" fontWeight={"bold"}>{formattedFrom}</FromEmailText><br/>
                   <ToEmailText fontSize="14px" fontWeight={"medium"}>To : {activeEmail.to}</ToEmailText>
@@ -26,15 +26,15 @@ const ViewEmailDetail = () => {
               </SenderInfo>
               <ButtonArea>
                 <AfterButtonArea>
-                  <MailNavButton id="forward" svgWidth="20px" svgHeight="20px"/>
-                  <MailNavButton id="doubleForward" svgWidth="20px" svgHeight="20px"/>
-                  <MailNavButton id="reply" svgWidth="20px" svgHeight="20px"/>
+                  <MailNavButton id="forward"/>
+                  <MailNavButton id="doubleForward" />
+                  <MailNavButton id="reply" />
                 </AfterButtonArea>
                 <BeforeButtonArea>
-                  <MailNavButton id="archive" svgWidth="20px" svgHeight="20px"/>
-                  <MailNavButton id="snooze" svgWidth="20px" svgHeight="20px"/>
-                  <MailNavButton id="pushPin" svgWidth="20px" svgHeight="20px"/>
-                  <MailNavButton id="more" svgWidth="20px" svgHeight="20px"/>
+                  <MailNavButton id="archive" />
+                  <MailNavButton id="snooze" />
+                  <MailNavButton id="pushPin"/>
+                  <MailNavButton id="more" />
                 </BeforeButtonArea>
               </ButtonArea>
             </EmailNavArea>

@@ -6,7 +6,6 @@ export const Container = tw.div`
   bg-white
   rounded-lg
   shadow-lg
-  
 `
 
 export const ViewEmailListContainer = tw(Container)`
@@ -68,7 +67,7 @@ export const RefreshIcon = styled(IconButton)`
       transform: rotate(-270deg);
     }
   }
-  ${tw`ml-auto w-[40px] h-[40px]`}
+  ${tw`ml-auto w-[40px] h-[40px] [> svg]:(w-[20px] h-[20px])`}
   
   & svg{
     ${tw`transition duration-500 ease-in-out transform`}
@@ -78,5 +77,6 @@ export const RefreshIcon = styled(IconButton)`
   }
 `
 export const FilterIcon = tw(IconButton)`
-  w-[40px] h-[40px]
+  w-[40px] h-[40px] 
+  [> svg]:(w-[20px] h-[20px])
 `

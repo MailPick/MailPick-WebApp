@@ -59,48 +59,42 @@ const Sidebar = () => {
           text="캘린더" 
           onClick={()=>{handleSectionChange("calendar",true)}} 
           isActive={selectTopButton == "calendar"}
-          svgWidth="20px"
-          svgHeight="20px"
+          
         />
         <OpenIconButton 
           id="biInbox" 
           text="받은 편지함" 
           onClick={()=>{handleSectionChange("inbox")}} 
           isActive={selectSection == "inbox"}
-          svgWidth="20px"
-          svgHeight="20px"
         />
         <OpenIconButton 
           id="paperPlaneTilt" 
           text="보낸 편지함" 
           onClick={()=>{handleSectionChange("sent")}} 
           isActive={selectSection == "sent"}
-          svgWidth="20px"
-          svgHeight="20px"
+          
+          
         />
         <OpenIconButton 
           id="pushPin" 
           text="고정 편지함" 
           onClick={()=>{handleSectionChange("pin")}} 
           isActive={selectSection == "pin"}
-          svgWidth="20px"
-          svgHeight="20px"
+          
         />
         <OpenIconButton 
           id="file" 
           text="임시보관함" 
           onClick={()=>{handleSectionChange("draft")}} 
           isActive={selectSection == "draft"}
-          svgWidth="20px"
-          svgHeight="20px"
+          
         />
         <OpenIconButton 
           id="trash" 
           text="휴지통" 
           onClick={()=>{handleSectionChange("trash")}} 
           isActive={selectSection == "trash"}
-          svgWidth="20px"
-          svgHeight="20px"
+          
         />
         {
             data && data.map((account:AccountType) => {
@@ -124,7 +118,7 @@ const Sidebar = () => {
   );
 };
 
-const OpenIconButton = tw(IconButton)`w-[160px] flex gap-[12px] items-center justify-start p-[8px]`;
+const OpenIconButton = tw(IconButton)`[> svg]:(w-[20px] h-[20px]) w-[160px] flex gap-[12px] items-center justify-start p-[8px]`;
 const OpenTextIconButton = tw(TextIconButton)`w-[200px] flex gap-[12px] items-center justify-start p-[10px] `;
 const ExpandedIconArea = styled.div``
 export default Sidebar;

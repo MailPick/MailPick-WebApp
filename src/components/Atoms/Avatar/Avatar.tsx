@@ -10,8 +10,6 @@ interface AvatarProp {
   boxHeight?:string;
   pngWidth?:string;
   pngHeight?:string;
-  svgWidth?:string;
-  svgHeight?:string;
 }
 
 const Avatar = ({
@@ -22,8 +20,6 @@ const Avatar = ({
   boxPadding = "2px",
   pngWidth,
   pngHeight,
-  svgWidth,
-  svgHeight,
   }:AvatarProp) => {
 
   const emailIconId = useEmailIcon(email)
@@ -39,8 +35,6 @@ const Avatar = ({
           {["naver", "google", "daum.png"].includes(emailIconId) ? (
             <Icon
               id={emailIconId}
-              svgWidth={svgWidth}
-              svgHeight={svgHeight}
               pngWidth={pngWidth}
               pngHeight={pngHeight}
             />
