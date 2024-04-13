@@ -6,22 +6,18 @@ process.env.VITE_PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.
 
 let win: BrowserWindow | null
 export const SEND_MAIN_PING = 'send_main_ping';
-const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
+// const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
-function createWindow() {
-  app.setName("MailPick")
-  win = new BrowserWindow({ 
-    width: 1600,
-    height: 900,
-    minWidth: 800,
-    minHeight: 600,
-    title:"MailPick",
-    titleBarStyle: 'hidden',
-    icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
-    webPreferences: {
+function createLoginWindow(){
+  win = new BrowserWindow({
+    width: 400,
+    height: 500,
+    webPreferences:{
       preload: path.join(__dirname, 'preload.js'),
     },
+    titleBarStyle: 'hidden',
   })
+  win.loadURL("http://localhost:5173")
   const menu = new Menu()
   menu.append(new MenuItem({
     label:"MailPick",
@@ -68,27 +64,58 @@ function createWindow() {
         }
       }
     }]
-}))
-Menu.setApplicationMenu(menu)
-
-  // Test active push message to Renderer-process.
+  }))
+    Menu.setApplicationMenu(menu)
   win.webContents.on('did-finish-load', () => {
-    win?.webContents.send('main-process-message', (new Date).toLocaleString())
-  })
+    win?.webContents.send('check-login');
+  });
 
-  if (VITE_DEV_SERVER_URL) {
-    win.loadURL(VITE_DEV_SERVER_URL)
-  } else {
-    // win.loadFile('dist/index.html')
-    win.loadFile(path.join(process.env.DIST, 'index.html'))
+  win.on('closed', () => {
+    win = null;
+  });
+}
+
+function switchToMainWindow(){
+  if(win){
+    win.setSize(1600, 900);
+    win.center();
+    win.loadURL("http://localhost:5173/main");
+
+    
   }
 }
-ipcMain.on('send_main_ping', (event, arg) => {
-  console.log('main-process-message:', arg)
-  event.reply('main-process-reply', 'pong')
-})
+
+// function createWindow() {
+//   app.setName("MailPick")
+//   win = new BrowserWindow({ 
+//     width: 1600,
+//     height: 900,
+//     minWidth: 800,
+//     minHeight: 600,
+//     title:"MailPick",
+//     titleBarStyle: 'hidden',
+//     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
+//     webPreferences: {
+//       preload: path.join(__dirname, 'preload.js'),
+//     },
+//   })
+  
+
+//   // Test active push message to Renderer-process.
+//   win.webContents.on('did-finish-load', () => {
+//     win?.webContents.send('main-process-message', (new Date).toLocaleString())
+//   })
+
+//   if (VITE_DEV_SERVER_URL) {
+//     win.loadURL(VITE_DEV_SERVER_URL)
+//   } else {
+//     // win.loadFile('dist/index.html')
+//     win.loadFile(path.join(process.env.DIST, 'index.html'))
+//   }
+// }
 
 let mailBoxWindow: BrowserWindow | null;
+
 ipcMain.on('open-mailbox', ()=>{
   if (mailBoxWindow) {
     if(mailBoxWindow.isMinimized()) mailBoxWindow.restore();
@@ -137,7 +164,9 @@ ipcMain.on('open-mailbox', ()=>{
 Menu.setApplicationMenu(menu)
   mailBoxWindow.loadURL("http://localhost:5173/mailbox")
 })
-app.whenReady().then(createWindow)
+
+app.whenReady().then(createLoginWindow)
+ipcMain.on('login-successful', switchToMainWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -150,7 +179,7 @@ app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createLoginWindow();
   }
 })
 
