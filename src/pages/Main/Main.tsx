@@ -5,7 +5,7 @@ import ViewEmailDetail from "@/components/Organism/ViewEmailDetail";
 import { useSelectSectionStore, useSelectTopButtonStore } from "@/store/selectSectionStore";
 import ViewCalendar from "@/components/Organism/ViewCalendar/ViewCalendar";
 import EmailScheduleSummary from "@/components/Molculeus/EmailScheduleSummary";
-import SideCalendar from "@/components/Molculeus/SideCalendar/SideCalendar";
+import SideCalendarWithSchedule from "@/components/Molculeus/SideCalendarWithSchedule/SideCalendarWithSchedule";
 const Main = () => {
   const {selectSection} = useSelectSectionStore();
   const {selectTopButton} = useSelectTopButtonStore();
@@ -21,7 +21,7 @@ const Main = () => {
             </MainContent>
             <SideContent>
               <EmailScheduleSummary/>
-              <SideCalendar/>
+              <SideCalendarWithSchedule/>
             </SideContent>
           </>
           ): (
@@ -38,6 +38,7 @@ const MainContainer = tw.div`
   flex-row
   bg-gray-main
   min-w-[1600px]
+  h-screen
   `
 const MainContent = styled.div`
   ${tw`

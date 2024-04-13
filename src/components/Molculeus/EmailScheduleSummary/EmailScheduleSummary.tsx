@@ -1,7 +1,7 @@
 import Text from "@/components/Atoms/Text";
 import IconButton from "@/components/Atoms/IconButton";
 import { Container } from "@/components/Organism/ViewEmailList/styled"
-import tw from "twin.macro"
+import tw, { styled } from "twin.macro"
 import { useActiveEmailStore } from "@/store/activeEmailStore";
 import usePostRequest from "@/hooks/usePostRequest";
 import Spinner from "@/components/Atoms/Spinner";
@@ -78,8 +78,9 @@ const ScheduleContainer = tw(Container)`
   rounded-[14px]
 `
 
-const EmailSummaryContainer = tw(ScheduleContainer)`
-  flex
+const EmailSummaryContainer = styled(ScheduleContainer)`
+  ${
+  tw`flex
   flex-col
   items-start
   justify-start
@@ -88,16 +89,25 @@ const EmailSummaryContainer = tw(ScheduleContainer)`
   gap-[4px]
   min-h-[120px]
   grow
-  overflow-y-auto
+  overflow-y-auto` 
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    border-radius: 10px; 
+  }
 `
 
 const ArrowIconBtn = tw(IconButton)`
-  w-[40px] h-[40px] rounded-full bg-[#D4E7FF] cursor-pointer
-  [> svg]:(w-[20px] h-[20px] [color:#2A86FF])
+  w-[32px] h-[32px] rounded-full bg-[#D4E7FF] cursor-pointer
+  [> svg]:(w-[16px] h-[16px] [color:#2A86FF])
 `
 
 const PlusIconBtn = tw(IconButton)`
-  w-[40px] h-[40px] rounded-full bg-[#D4E7FF] cursor-pointer
-  [> svg]:(w-[32px] h-[32px] [color:#2A86FF])
+  w-[32px] h-[32px] rounded-full bg-[#D4E7FF] cursor-pointer
+  [> svg]:(w-[16px] h-[16px] [color:#2A86FF])
 `
 const SpinnerBox = tw.div`bg-[#D4E7FF] w-[40px] h-[40px] rounded-full flex items-center justify-center select-none`

@@ -65,6 +65,7 @@ export const EmailBody = tw.div``
 export const MailNavButton = tw(IconButton)`
   w-[40px]
   h-[40px]
+  [> svg]:(w-[20px] h-[20px])
 `
 
 export const AfterButtonArea = tw.div`

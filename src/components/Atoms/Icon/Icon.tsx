@@ -24,6 +24,7 @@ export const IconId = {
   More:"more",
   Arrow:"arrow",
   Plus:"plus",
+  Expansion:"expansion",
   Daum:"daum.png",
 } as const
 
@@ -31,8 +32,6 @@ export type IconId = typeof IconId[keyof typeof IconId]
 
 interface IconProps{
   id : IconId | string;
-  svgWidth? : string;
-  svgHeight? : string;
   pngWidth? : string;
   pngHeight? : string;
   space?:string;
@@ -40,8 +39,6 @@ interface IconProps{
 
 const Icon = ({
   id,
-  svgWidth = "24px",
-  svgHeight = "24px",
   pngWidth = "22px",
   pngHeight = "22px",
   ...props
@@ -60,7 +57,7 @@ const Icon = ({
   }
   else{
     return(
-      <svg width={svgWidth} height={svgHeight} fill="currentColor"{...props}>
+      <svg fill="currentColor" {...props}>
         <use href={`#${name}`}/>
       </svg>
     )

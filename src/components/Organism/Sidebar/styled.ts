@@ -26,4 +26,5 @@ export const SideBarContainer = styled.div<ContainerProps>`
     border-radius: 10px;
   }
 `
-export const Hr = tw.hr`w-[66px] h-[2px] bg-gray-50 rounded-md`
+export const StyledHr = tw.hr`w-[66px] h-[2px] bg-gray-50 rounded-md`
+export const Hr = tw(StyledHr)``

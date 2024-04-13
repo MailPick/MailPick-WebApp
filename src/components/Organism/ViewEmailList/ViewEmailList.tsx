@@ -24,8 +24,8 @@ const ViewEmailList = () => {
         {selectSection === "draft" && <Title fontSize="16px" fontWeight="semibold">임시보관함 - 모든메일</Title>}
         {selectSection === "trash" && <Title fontSize="16px" fontWeight="semibold">휴지통 - 모든메일</Title>}
         {hasMatchingAccount && <Title fontSize="16px" fontWeight="semibold">{selectSection}</Title> }
-        <RefreshIcon id="refresh" svgWidth="20px" svgHeight="20px"/>
-        <FilterIcon id="filter" svgWidth="20px" svgHeight="20px"/>
+        <RefreshIcon id="refresh" />
+        <FilterIcon id="filter"/>
       </Header>
       <InputArea>
         <Input type="text" placeholder="Search" onChange={getValue}/>
