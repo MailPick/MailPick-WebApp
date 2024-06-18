@@ -3,9 +3,8 @@ import Text from "@/components/Atoms/Text";
 import { useEffect } from "react";
 import tw from "twin.macro";
 
-
 const {Kakao} = window;
-console.log(Kakao)
+
 const KakaoLogin = () => {
   const initKakao = () => {
     if(Kakao && !Kakao.isInitialized()){

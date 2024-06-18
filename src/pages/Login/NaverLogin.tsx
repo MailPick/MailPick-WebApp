@@ -28,6 +28,7 @@ const NaverLogin = () => {
           const userInfo = naverLogin.user;
           setUserInfo(userInfo);
           console.log(userInfo);
+          window.location.href = "/main";
           window.electron.ipcRenderer.send('login-successful')
         }
       });

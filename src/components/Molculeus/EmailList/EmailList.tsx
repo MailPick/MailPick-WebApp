@@ -24,7 +24,6 @@ const EmailList = ({emails,userInput}:Props) => {
   };
   const emailsGroupedByDate = groupEmailsByDate(filteredEmails);
 
-  console.log("selectEmail",activeEmail)
   return(
     <>
       {Object.entries(emailsGroupedByDate).map(([dateGroup, emails]) => (

@@ -4,40 +4,45 @@ import tw from "twin.macro";
 import Icon from "@/components/Atoms/Icon";
 import Text from "@/components/Atoms/Text";
 
-const postLoginToken = async (idToken:string) => {
-  const API_URL = import.meta.env.VITE_DEV_SERVER_URL
-  const path = "/main" //백엔드 api url
-  console.log("postLoginToken", idToken)
-  try {
-    const res = await fetch(`${API_URL}${path}`, {
-      method:"POST",
-      credentials:"include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(idToken)
-    })
-    if(!res.ok) throw new Error("postLoginToken Error")
-    return true;
-  }
-  catch(e){
-    console.log("postLoginToken Error", e);
-    return false;
-  }
-}
-
-
+// const postLoginToken = async (idToken:string) => {
+//   const API_URL = import.meta.env.VITE_DEV_SERVER_URL
+//   const path = "/main" //백엔드 api url
+//   console.log("postLoginToken", idToken)
+//   try {
+//     const res = await fetch(`${API_URL}${path}`, {
+//       method:"POST",
+//       credentials:"include",
+//       headers: {
+//         Accept: "application/json",
+//         "Content-Type":"application/json"
+//       },
+//       body:JSON.stringify(idToken)
+//     })
+//     if(!res.ok) throw new Error("postLoginToken Error")
+//     return true;
+//   }
+//   catch(e){
+//     console.log("postLoginToken Error", e);
+//     return false;
+//   }
+// }
 
 const GoogleLogin = ({
   text = "sign_with"
-})=>{
-  const [isLogin , setIsLogin] = useState(false)
+  })=>{
+    const [isLogin , setIsLogin] = useState(false)
 
-  const onGoogleSignIn = async res => {
+  const onGoogleSignIn = async (res) => {
     const {credential} = res;
-    const result = await postLoginToken(credential)
-    setIsLogin(result)
+    const tokenInfo = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${credential}`);
+    const tokenData = await tokenInfo.json();
+
+    if (tokenData.aud === import.meta.env.VITE_GOOGLE_CLIENT_ID) {
+      setIsLogin(true);
+    } else {
+      console.error("Token validation failed");
+      setIsLogin(false);
+    }
   }
 
   useEffect(()=>{

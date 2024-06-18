@@ -2,15 +2,13 @@ import Sidebar from "@/components/Organism/Sidebar";
 import tw, { styled } from "twin.macro";
 import ViewEmailList from "@/components/Organism/ViewEmailList";
 import ViewEmailDetail from "@/components/Organism/ViewEmailDetail";
-import { useIsExpandedStore, useSelectSectionStore, useSelectTopButtonStore } from "@/store/selectSectionStore";
+import { useIsExpandedStore, useSelectTopButtonStore } from "@/store/selectSectionStore";
 import ViewCalendar from "@/components/Organism/ViewCalendar/ViewCalendar";
 import EmailScheduleSummary from "@/components/Molculeus/EmailScheduleSummary";
 import SideCalendarWithSchedule from "@/components/Molculeus/SideCalendarWithSchedule/SideCalendarWithSchedule";
 const Main = () => {
-  const {selectSection} = useSelectSectionStore();
   const {selectTopButton} = useSelectTopButtonStore();
   const {isExpanded} = useIsExpandedStore();
-  console.log("main select",selectSection);
   return(
     <MainContainer>
       <SidebarContainer isExpanded={isExpanded}>
