@@ -38,6 +38,12 @@ const backgroundPosition = {
 const boxShadow = {
   "card" : "0px 0px 20px 0px rgba(0, 74, 166, 0.08); "
 }
+
+const transitionProperty = {
+  "width": "width",
+  "background": "background",
+  "min-width": "min-width",
+}
 export default {
   content: ["./src/**/*.{html,js}"],
   theme: {
@@ -45,7 +51,8 @@ export default {
       colors,
       backgroundImage,
       backgroundPosition,
-      boxShadow
+      boxShadow,
+      transitionProperty
     }
   },
   plugins: [],
